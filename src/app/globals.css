@@ -1,41 +1,105 @@
 /* ============================================
-   KHALED RENTALS — Google Stitch Design System
-   Deep Navy Blue (#1A2B3C) & Emerald Green (#10B981)
+   KHALED RENTALS — Extracted Google Stitch Design System
+   Project: https://stitch.withgoogle.com/projects/7030931439450253233
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-:root, [data-theme="obsidian"] {
-  --bg-base: #0b1320;
-  --bg-surface: #0f172a;
-  --bg-surface-dim: #090e17;
-  --bg-surface-bright: #1e293b;
-  --bg-container-lowest: #070c14;
-  --bg-container-low: #111c2e;
-  --bg-container: #1a2b3c;
-  --bg-container-high: #24374c;
-  --bg-container-highest: #2d435c;
+:root {
+  /* Brand Core Colors */
+  --stitch-primary: #1A2B3C;
+  --stitch-secondary: #10B981;
+  --stitch-tertiary: #F8FAFC;
+  --stitch-neutral: #64748B;
 
-  --clr-primary: #10b981;
-  --clr-primary-container: #059669;
-  --clr-primary-dim: #34d399;
+  /* Primary Scale (#1A2B3C Deep Navy) */
+  --stitch-primary-10: #0b1d2d;
+  --stitch-primary-20: #213243;
+  --stitch-primary-30: #38485a;
+  --stitch-primary-40: #4f6073;
+  --stitch-primary-50: #68798d;
+  --stitch-primary-60: #8192a7;
+  --stitch-primary-70: #9badc2;
+  --stitch-primary-80: #b7c8de;
+  --stitch-primary-90: #d2e4fb;
+  --stitch-primary-95: #e9f1ff;
+
+  /* Secondary Scale (#10B981 Emerald Green) */
+  --stitch-secondary-10: #002113;
+  --stitch-secondary-20: #003824;
+  --stitch-secondary-30: #005236;
+  --stitch-secondary-40: #006c49;
+  --stitch-secondary-50: #00885d;
+  --stitch-secondary-60: #00a572;
+  --stitch-secondary-70: #26c289;
+  --stitch-secondary-80: #4edea3;
+  --stitch-secondary-90: #6ffbbe;
+  --stitch-secondary-95: #beffdb;
+
+  /* Neutral Scale (#64748B Cool Slate) */
+  --stitch-neutral-10: #0b1c30;
+  --stitch-neutral-20: #213145;
+  --stitch-neutral-30: #38485d;
+  --stitch-neutral-40: #505f76;
+  --stitch-neutral-50: #68788f;
+  --stitch-neutral-60: #8292aa;
+  --stitch-neutral-70: #9cacc5;
+  --stitch-neutral-80: #b7c8e1;
+  --stitch-neutral-90: #d3e4fe;
+  --stitch-neutral-95: #eaf1ff;
+
+  /* App Mappings */
+  --bg-base: #0b1d2d;
+  --bg-surface: #112233;
+  --bg-container: #1A2B3C;
+  --bg-container-high: #213243;
+  --clr-primary: #10B981;
+  --clr-on-primary: #ffffff;
+  --clr-on-surface: #F8FAFC;
+  --clr-on-surface-muted: #9cacc5;
+
+  --font-headline: 'Inter', sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --glass-bg: rgba(26, 43, 60, 0.85);
+  --glass-blur: blur(16px);
+  --glass-border: 1px solid rgba(16, 185, 129, 0.25);
+  --card-radius: 12px;
+}
+
+/* 🏛️ Theme 2: Nordic Slate & Warm Bronze */
+[data-theme="nordic"] {
+  --bg-base: #0f172a;
+  --bg-surface: #111827;
+  --bg-surface-dim: #0b0f19;
+  --bg-surface-bright: #1f2937;
+  --bg-container-lowest: #0b0f19;
+  --bg-container-low: #131d31;
+  --bg-container: #1e293b;
+  --bg-container-high: #334155;
+  --bg-container-highest: #475569;
+
+  --clr-primary: #d97706;
+  --clr-primary-container: #b45309;
+  --clr-primary-dim: #f59e0b;
   --clr-on-primary: #ffffff;
   --clr-on-primary-container: #ffffff;
 
-  --clr-secondary: #38bdf8;
+  --clr-secondary: #0ea5e9;
   --clr-secondary-container: #1e293b;
   --clr-on-secondary: #ffffff;
 
   --clr-tertiary: #94a3b8;
-  --clr-tertiary-container: #1a2b3c;
+  --clr-tertiary-container: #1e293b;
 
   --clr-on-surface: #f8fafc;
   --clr-on-surface-variant: #cbd5e1;
-  --clr-on-surface-muted: #64748b;
+  --clr-on-surface-muted: #94a3b8;
 
-  --clr-outline: rgba(16, 185, 129, 0.25);
+  --clr-outline: rgba(217, 119, 6, 0.25);
   --clr-outline-variant: rgba(255, 255, 255, 0.08);
-  --clr-surface-variant: #1e293b;
+  --clr-surface-variant: #334155;
 
   --clr-error: #f87171;
   --clr-error-container: #7f1d1d;
@@ -47,16 +111,16 @@
   --clr-warning-bg: rgba(245, 158, 11, 0.12);
   --clr-danger: #f87171;
   --clr-danger-bg: rgba(248, 113, 113, 0.12);
-  --clr-info: #38bdf8;
-  --clr-info-bg: rgba(56, 189, 248, 0.12);
+  --clr-info: #0ea5e9;
+  --clr-info-bg: rgba(14, 165, 233, 0.12);
 
   --font-headline: 'Inter', sans-serif;
   --font-body: 'Inter', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --glass-bg: rgba(26, 43, 60, 0.75);
-  --glass-blur: blur(16px);
-  --glass-border: 1px solid rgba(16, 185, 129, 0.2);
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-blur: blur(12px);
+  --glass-border: 1px solid rgba(217, 119, 6, 0.2);
   --card-radius: var(--radius-lg);
 }
 

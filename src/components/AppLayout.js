@@ -15,7 +15,8 @@ import {
   ChevronLeft, 
   ChevronRight, 
   Menu,
-  ShieldCheck
+  ShieldCheck,
+  Wrench
 } from 'lucide-react';
 import styles from './AppLayout.module.css';
 
@@ -46,6 +47,7 @@ export default function AppLayout({ children }) {
     { name: 'DASHBOARD', path: '/', icon: LayoutDashboard },
     { name: 'PROPERTIES', path: '/properties', icon: Building2 },
     { name: 'RENTERS', path: '/renters', icon: Users },
+    { name: 'MAINTENANCE', path: '/maintenance', icon: Wrench },
     { name: 'PAYMENT SPLITS', path: '/', icon: Calendar },
     { name: 'NOTIFICATIONS', path: '/notifications', icon: Bell },
   ];
@@ -72,7 +74,7 @@ export default function AppLayout({ children }) {
             {!isCollapsed && (
               <div className={styles.brandGroup}>
                 <span className={styles.logoText}>Khaled Rentals</span>
-                <span className={styles.subtitleText}>ELITE MANAGEMENT</span>
+                <span className={styles.subtitleText}>ESTATEMASTER</span>
               </div>
             )}
           </div>
