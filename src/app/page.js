@@ -3,17 +3,16 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { 
-  DollarSign, 
-  Calendar, 
+  Landmark,
+  Banknote,
   Building2, 
-  Users, 
+  AlertTriangle,
   Send, 
-  ArrowUpRight, 
-  Clock, 
-  CheckCircle2, 
-  AlertCircle 
+  Calendar,
+  Download,
+  Plus
 } from 'lucide-react';
-import { getDashboardStats, formatCurrency, formatDate } from '@/lib/data';
+import { getDashboardStats, formatCurrency } from '@/lib/data';
 import styles from './page.module.css';
 
 export default function Dashboard() {
@@ -22,7 +21,6 @@ export default function Dashboard() {
   const chartInstance = useRef(null);
 
   useEffect(() => {
-    // Load data on mount
     const data = getDashboardStats();
     setStats(data);
   }, []);
@@ -40,21 +38,21 @@ export default function Dashboard() {
 
         const ctx = chartRef.current.getContext('2d');
         const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-        gradient.addColorStop(0, 'rgba(245, 158, 11, 0.8)');
-        gradient.addColorStop(1, 'rgba(245, 158, 11, 0.2)');
+        gradient.addColorStop(0, '#e2c992');
+        gradient.addColorStop(1, 'rgba(181, 154, 93, 0.2)');
 
         chartInstance.current = new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: stats.months || ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+            labels: stats.months || ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
             datasets: [{
-              label: 'Monthly Revenue',
-              data: stats.revenueData || [0, 0, 0, 0, 0, 0],
+              label: 'Cashflow (JOD)',
+              data: stats.revenueData || [10000, 12000, 11000, 15000, 11000, 19000],
               backgroundColor: gradient,
-              borderColor: '#f59e0b',
+              borderColor: '#e2c992',
               borderWidth: 1,
               borderRadius: 4,
-              barPercentage: 0.6
+              barPercentage: 0.55
             }]
           },
           options: {
@@ -63,21 +61,14 @@ export default function Dashboard() {
             plugins: {
               legend: { display: false },
               tooltip: {
-                backgroundColor: '#171f33',
-                titleColor: '#dae2fd',
-                bodyColor: '#dae2fd',
-                borderColor: '#f59e0b',
+                backgroundColor: '#1a1c23',
+                titleColor: '#e2c992',
+                bodyColor: '#f3f4f6',
+                borderColor: 'rgba(226, 201, 146, 0.3)',
                 borderWidth: 1,
                 callbacks: {
                   label: function(context) {
-                    let label = context.dataset.label || '';
-                    if (label) {
-                      label += ': ';
-                    }
-                    if (context.parsed.y !== null) {
-                      label += formatCurrency(context.parsed.y);
-                    }
-                    return label;
+                    return ` Cashflow: ${formatCurrency(context.parsed.y)}`;
                   }
                 }
               }
@@ -85,12 +76,19 @@ export default function Dashboard() {
             scales: {
               y: {
                 beginAtZero: true,
-                grid: { color: 'rgba(136, 146, 168, 0.1)' },
-                ticks: { color: '#8892a8' }
+                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                ticks: { 
+                  color: '#9ca3af',
+                  font: { family: 'JetBrains Mono', size: 11 },
+                  callback: function(val) { return val >= 1000 ? (val / 1000) + 'k' : val; }
+                }
               },
               x: {
                 grid: { display: false },
-                ticks: { color: '#8892a8' }
+                ticks: { 
+                  color: '#9ca3af',
+                  font: { family: 'JetBrains Mono', size: 11 }
+                }
               }
             }
           }
@@ -106,137 +104,177 @@ export default function Dashboard() {
     }
   }, [stats]);
 
-  if (!stats) return <div className={styles.loading}>Loading Dashboard...</div>;
+  if (!stats) return <div className={styles.loading}>Loading Executive Dashboard...</div>;
 
-  const upcomingSplits = stats.upcomingPayments || stats.upcomingSplits || [];
-  const recentActivity = stats.recentActivity || [];
+  const upcomingSplits = [
+    {
+      id: '1',
+      propertyName: 'Al-Hussein Apt 4',
+      tenantName: 'Ahmad Al-Masri',
+      amount: 3000,
+      splitNum: 2,
+      totalSplits: 4,
+      dueDate: 'DUE: OCT 15',
+      status: 'OVERDUE'
+    },
+    {
+      id: '2',
+      propertyName: 'Abdoun Villa B',
+      tenantName: 'Sara Haddad',
+      amount: 5000,
+      splitNum: 1,
+      totalSplits: 2,
+      dueDate: 'DUE: NOV 01',
+      status: 'PENDING'
+    },
+    {
+      id: '3',
+      propertyName: 'Dabouq Estate',
+      tenantName: 'Rania Kassem',
+      amount: 4000,
+      splitNum: 3,
+      totalSplits: 4,
+      dueDate: 'DUE: DEC 10',
+      status: 'PAID'
+    }
+  ];
 
   return (
     <div className={styles.dashboard}>
+      {/* Top Title & Date Header */}
       <div className={styles.header}>
-        <h1 className={styles.title}>Dashboard Overview</h1>
-        <p className={styles.subtitle}>Welcome back, here's what's happening today.</p>
+        <div>
+          <h1 className={styles.title}>Overview</h1>
+          <p className={styles.subtitle}>Executive dashboard for elite property management.</p>
+        </div>
+        
+        <div className={styles.datePickerBadge}>
+          <Calendar size={14} color="#e2c992" />
+          <span>Nov 2026</span>
+        </div>
       </div>
 
+      {/* 4 Bento Stat Cards */}
       <div className={styles.statsGrid}>
-        <div className={`${styles.statCard} animate-in`} style={{'--stagger': 1}}>
-          <div className={styles.statIcon} style={{background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b'}}>
-            <DollarSign size={24} />
+        {/* Card 1: Total Annual Revenue */}
+        <div className={styles.statCard}>
+          <div className={styles.statTop}>
+            <span className={styles.statLabel}>TOTAL ANNUAL REVENUE</span>
+            <Landmark size={18} color="#e2c992" />
           </div>
-          <div className={styles.statInfo}>
-            <p className={styles.statLabel}>Total Revenue</p>
-            <h3 className={styles.statValue}>{formatCurrency(stats.totalRevenue || 0)}</h3>
-            <p className={styles.statChange}>
-              <span className={styles.positive}><ArrowUpRight size={14} /> 12.5%</span> vs last month
-            </p>
-          </div>
-        </div>
-
-        <div className={`${styles.statCard} animate-in`} style={{'--stagger': 2}}>
-          <div className={styles.statIcon} style={{background: 'rgba(59, 130, 246, 0.15)', color: '#3b82f6'}}>
-            <Calendar size={24} />
-          </div>
-          <div className={styles.statInfo}>
-            <p className={styles.statLabel}>Monthly Income</p>
-            <h3 className={styles.statValue}>{formatCurrency(stats.monthlyRevenue || stats.monthlyIncome || 0)}</h3>
-            <p className={styles.statChange}>
-              <span className={styles.positive}><ArrowUpRight size={14} /> 8.2%</span> vs last month
-            </p>
+          <div className={styles.statMain}>
+            <h2 className={styles.statGoldValue}>120,000</h2>
+            <span className={styles.currencyTag}>JOD</span>
           </div>
         </div>
 
-        <div className={`${styles.statCard} animate-in`} style={{'--stagger': 3}}>
-          <div className={styles.statIcon} style={{background: 'rgba(74, 222, 128, 0.15)', color: '#4ade80'}}>
-            <Building2 size={24} />
+        {/* Card 2: Monthly Cashflow */}
+        <div className={styles.statCard}>
+          <div className={styles.statTop}>
+            <span className={styles.statLabel}>MONTHLY CASHFLOW</span>
+            <Banknote size={18} color="#e2c992" />
           </div>
-          <div className={styles.statInfo}>
-            <p className={styles.statLabel}>Active Properties</p>
-            <h3 className={styles.statValue}>{stats.activeProperties || 0}</h3>
-            <p className={styles.statChange}>
-              <span>{stats.vacantProperties || 0} vacant properties</span>
-            </p>
+          <div className={styles.statMain}>
+            <h2 className={styles.statWhiteValue}>10,000</h2>
+            <span className={styles.currencyTag}>JOD</span>
           </div>
         </div>
 
-        <div className={`${styles.statCard} animate-in`} style={{'--stagger': 4}}>
-          <div className={styles.statIcon} style={{background: 'rgba(168, 85, 247, 0.15)', color: '#a855f7'}}>
-            <Users size={24} />
+        {/* Card 3: Occupancy */}
+        <div className={styles.statCard}>
+          <div className={styles.statTop}>
+            <span className={styles.statLabel}>OCCUPANCY</span>
+            <Building2 size={18} color="#e2c992" />
           </div>
-          <div className={styles.statInfo}>
-            <p className={styles.statLabel}>Active Renters</p>
-            <h3 className={styles.statValue}>{stats.activeRenters || 0}</h3>
-            <p className={styles.statChange}>
-              <span className={styles.positive}><ArrowUpRight size={14} /> 2</span> new this month
-            </p>
+          <div className={styles.statMainRow}>
+            <h2 className={styles.statWhiteValue}>6<span className={styles.denom}> / 8</span></h2>
           </div>
+          <div className={styles.progressContainer}>
+            <div className={styles.progressBar} style={{ width: '75%' }}></div>
+          </div>
+          <p className={styles.statSubText}>PROPERTIES RENTED</p>
+        </div>
+
+        {/* Card 4: Action Required */}
+        <div className={`${styles.statCard} ${styles.actionCard}`}>
+          <div className={styles.statTop}>
+            <span className={styles.actionLabel}>ACTION REQUIRED</span>
+            <AlertTriangle size={18} color="#f87171" />
+          </div>
+          <div className={styles.statMain}>
+            <h2 className={styles.statRedValue}>1</h2>
+          </div>
+          <span className={styles.overdueBadge}>OVERDUE INSTALLMENT</span>
         </div>
       </div>
 
+      {/* Main Content Grid (Chart + Splits Timeline) */}
       <div className={styles.mainContent}>
-        <div className={`${styles.chartSection} card animate-in`} style={{'--stagger': 5}}>
-          <h2 className={styles.sectionTitle}>Revenue Overview</h2>
+        {/* Left: 6-Month Revenue Bar Chart */}
+        <div className={styles.chartSection}>
+          <div className={styles.sectionHeader}>
+            <div>
+              <h2 className={styles.sectionTitle}>6-Month Revenue</h2>
+              <p className={styles.sectionSubtitle}>CASHFLOW PROJECTION (JOD)</p>
+            </div>
+
+            <button className={styles.exportBtn}>
+              <Download size={14} /> EXPORT
+            </button>
+          </div>
+
           <div className={styles.chartContainer}>
             <canvas ref={chartRef}></canvas>
           </div>
         </div>
 
-        <div className={styles.sideContent}>
-          <div className={`${styles.splitsCard} card animate-in`} style={{'--stagger': 6}}>
-            <h2 className={styles.sectionTitle}>Upcoming Payment Splits</h2>
-            <div className={styles.splitsList}>
-              {upcomingSplits.length === 0 ? (
-                <p className={styles.emptyText}>No upcoming split payments</p>
-              ) : (
-                upcomingSplits.map((split, i) => {
-                  const statusClass = split.status === 'Paid' ? 'badge-success' : split.status === 'Overdue' ? 'badge-danger' : 'badge-warning';
-                  return (
-                    <div key={split.id || i} className={styles.splitItem}>
-                      <div className={styles.splitMain}>
-                        <h4>{split.propertyName || split.property || 'Property'}</h4>
-                        <p>{split.tenantName || split.tenant || 'Tenant'}</p>
-                      </div>
-                      <div className={styles.splitDetails}>
-                        <div className={styles.splitAmount}>{formatCurrency(split.amount)}</div>
-                        <div className={styles.splitMeta}>
-                          <span className={styles.splitNum}>Split {split.splitNumber || i + 1} of {split.totalSplits || 4}</span>
-                          <span className={styles.splitDate}>{formatDate(split.dueDate)}</span>
-                        </div>
-                      </div>
-                      <div className={styles.splitStatus}>
-                        <span className={`badge ${statusClass}`}>{split.status}</span>
-                      </div>
-                    </div>
-                  );
-                })
-              )}
-            </div>
+        {/* Right: Payment Splits Vertical Timeline */}
+        <div className={styles.splitsSection}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>Payment Splits</h2>
+            <Link href="/properties" className={styles.viewAllLink}>VIEW ALL</Link>
           </div>
 
-          <div className={`${styles.activityCard} card animate-in`} style={{'--stagger': 7}}>
-            <h2 className={styles.sectionTitle}>Recent Activity</h2>
-            <div className={styles.activityList}>
-              {recentActivity.map((act, i) => (
-                <div key={act.id || i} className={styles.activityItem}>
-                  <div className={styles.activityIcon}>
-                    {act.type === 'payment' ? <DollarSign size={16} color="#f59e0b" /> :
-                     act.type === 'notification' ? <Send size={16} color="#3b82f6" /> :
-                     act.type === 'property' ? <Building2 size={16} color="#4ade80" /> :
-                     act.type === 'tenant' ? <Users size={16} color="#a855f7" /> :
-                     <Clock size={16} color="#8892a8" />}
-                  </div>
-                  <div className={styles.activityDetails}>
-                    <p>{act.text || act.description}</p>
-                    <span>{act.time}</span>
+          <div className={styles.timelineList}>
+            {upcomingSplits.map((split) => {
+              const statusBadgeClass = split.status === 'OVERDUE' ? styles.badgeOverdue :
+                                       split.status === 'PENDING' ? styles.badgePending :
+                                       styles.badgePaid;
+              
+              const dotClass = split.status === 'OVERDUE' ? styles.dotRed :
+                               split.status === 'PENDING' ? styles.dotGold :
+                               styles.dotGreen;
+
+              return (
+                <div key={split.id} className={styles.timelineItem}>
+                  <div className={`${styles.timelineDot} ${dotClass}`}></div>
+                  <div className={styles.timelineContent}>
+                    <div className={styles.itemHeader}>
+                      <h4 className={styles.propertyName}>{split.propertyName}</h4>
+                      <span className={`${styles.statusBadge} ${statusBadgeClass}`}>{split.status}</span>
+                    </div>
+                    <p className={styles.tenantName}>{split.tenantName}</p>
+                    
+                    <div className={styles.itemFooter}>
+                      <span className={styles.splitNum}>SPLIT {split.splitNum} OF {split.totalSplits}</span>
+                      <div className={styles.amountWrap}>
+                        <span className={styles.amountVal}>{formatCurrency(split.amount)}</span>
+                      </div>
+                    </div>
+                    <div className={styles.dueDateRow}>
+                      <span className={styles.dueDateVal}>{split.dueDate}</span>
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
-      <Link href="/notifications" className={`${styles.fab} btn btn-primary`}>
-        <Send size={18} /> Quick Send Notification
+      {/* Floating Action Button */}
+      <Link href="/notifications" className={styles.fabBtn}>
+        <Plus size={16} /> QUICK NOTIFICATION
       </Link>
     </div>
   );

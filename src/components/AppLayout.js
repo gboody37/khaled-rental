@@ -7,14 +7,15 @@ import {
   LayoutDashboard, 
   Building2, 
   Users, 
+  Calendar,
   Bell, 
   Settings, 
-  Home, 
+  Plus, 
   X, 
   ChevronLeft, 
   ChevronRight, 
   Menu,
-  Palette
+  ShieldCheck
 } from 'lucide-react';
 import styles from './AppLayout.module.css';
 
@@ -22,22 +23,12 @@ export default function AppLayout({ children }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState('obsidian');
   const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('app_theme') || 'obsidian';
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.documentElement.setAttribute('data-theme', 'obsidian');
   }, []);
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'obsidian' ? 'nordic' : 'obsidian';
-    setTheme(nextTheme);
-    localStorage.setItem('app_theme', nextTheme);
-    document.documentElement.setAttribute('data-theme', nextTheme);
-  };
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -51,25 +42,18 @@ export default function AppLayout({ children }) {
     setIsMobileOpen(false);
   };
 
-  const navItems = [
-    { name: 'Dashboard', path: '/', icon: LayoutDashboard },
-    { name: 'Properties', path: '/properties', icon: Building2 },
-    { name: 'Renters', path: '/renters', icon: Users },
-    { name: 'Notifications', path: '/notifications', icon: Bell },
-    { name: 'Settings', path: '/settings', icon: Settings },
+  const mainNavItems = [
+    { name: 'DASHBOARD', path: '/', icon: LayoutDashboard },
+    { name: 'PROPERTIES', path: '/properties', icon: Building2 },
+    { name: 'RENTERS', path: '/renters', icon: Users },
+    { name: 'PAYMENT SPLITS', path: '/', icon: Calendar },
+    { name: 'NOTIFICATIONS', path: '/notifications', icon: Bell },
   ];
 
-  const getPageTitle = () => {
-    const item = navItems.find(item => item.path === pathname || (pathname.startsWith(item.path) && item.path !== '/'));
-    return item ? item.name : 'Dashboard';
-  };
-
   const currentDate = mounted ? new Date().toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  }) : '';
+    month: 'short',
+    year: 'numeric'
+  }) : 'Nov 2026';
 
   return (
     <div className={styles.layout}>
@@ -82,8 +66,15 @@ export default function AppLayout({ children }) {
       <aside className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''} ${isMobileOpen ? styles.mobileOpen : ''}`}>
         <div className={styles.sidebarHeader}>
           <div className={styles.logo}>
-            <span className={styles.logoIcon}><Home size={22} color="var(--clr-primary)" /></span>
-            {!isCollapsed && <span className={styles.logoText}>Khaled Rentals</span>}
+            <div className={styles.avatarBadge}>
+              <ShieldCheck size={20} color="#e2c992" />
+            </div>
+            {!isCollapsed && (
+              <div className={styles.brandGroup}>
+                <span className={styles.logoText}>Khaled Rentals</span>
+                <span className={styles.subtitleText}>ELITE MANAGEMENT</span>
+              </div>
+            )}
           </div>
           <button className={styles.closeMobileBtn} onClick={toggleMobileSidebar}>
             <X size={20} />
@@ -91,18 +82,18 @@ export default function AppLayout({ children }) {
         </div>
 
         <nav className={styles.nav}>
-          {navItems.map((item) => {
+          {mainNavItems.map((item) => {
             const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
             const Icon = item.icon;
             return (
               <Link 
                 href={item.path} 
-                key={item.path}
+                key={item.name}
                 className={`${styles.navItem} ${isActive ? styles.active : ''}`}
                 onClick={closeMobileSidebar}
                 title={isCollapsed ? item.name : ''}
               >
-                <span className={styles.navIcon}><Icon size={20} /></span>
+                <span className={styles.navIcon}><Icon size={18} /></span>
                 {!isCollapsed && <span className={styles.navText}>{item.name}</span>}
               </Link>
             );
@@ -110,41 +101,39 @@ export default function AppLayout({ children }) {
         </nav>
 
         <div className={styles.sidebarFooter}>
+          <Link 
+            href="/settings"
+            className={`${styles.navItem} ${styles.settingsLink} ${pathname === '/settings' ? styles.active : ''}`}
+            onClick={closeMobileSidebar}
+          >
+            <span className={styles.navIcon}><Settings size={18} /></span>
+            {!isCollapsed && <span className={styles.navText}>SETTINGS</span>}
+          </Link>
+
+          {!isCollapsed ? (
+            <Link href="/properties/new" className={styles.addPropertyBtn}>
+              <Plus size={16} /> NEW PROPERTY
+            </Link>
+          ) : (
+            <Link href="/properties/new" className={styles.addPropertyBtnIcon} title="New Property">
+              <Plus size={18} />
+            </Link>
+          )}
+
           <button className={styles.collapseBtn} onClick={toggleSidebar}>
-            {isCollapsed ? <ChevronRight size={18} /> : <><ChevronLeft size={18} /> Collapse</>}
+            {isCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
           </button>
         </div>
       </aside>
 
       {/* Main Content */}
       <main className={styles.main}>
-        <header className={styles.topbar}>
-          <div className={styles.topbarLeft}>
-            <button className={styles.mobileMenuBtn} onClick={toggleMobileSidebar}>
-              <Menu size={22} />
-            </button>
-            <h1 className={styles.pageTitle}>{getPageTitle()}</h1>
-          </div>
-          
-          <div className={styles.topbarRight}>
-            <span className={styles.currentDate}>{currentDate}</span>
-            
-            {/* Live Theme Switcher */}
-            <button 
-              onClick={toggleTheme} 
-              className={styles.themeToggleBtn}
-              title="Click to switch between Monaco Obsidian and Nordic Slate themes"
-            >
-              <Palette size={16} />
-              <span>{theme === 'obsidian' ? 'Monaco Gold' : 'Nordic Bronze'}</span>
-            </button>
-
-            <button className={styles.notificationBtn}>
-              <Bell size={20} />
-              <span className={styles.notificationBadge}>3</span>
-            </button>
-          </div>
-        </header>
+        <div className={styles.topbarMobile}>
+          <button className={styles.mobileMenuBtn} onClick={toggleMobileSidebar}>
+            <Menu size={22} />
+          </button>
+          <span className={styles.mobileBrand}>Khaled Rentals</span>
+        </div>
 
         <div className={styles.content}>
           {children}
