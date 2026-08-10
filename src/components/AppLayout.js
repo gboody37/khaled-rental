@@ -67,7 +67,7 @@ export default function AppLayout({ children }) {
         <div className={styles.sidebarHeader}>
           <div className={styles.logo}>
             <div className={styles.avatarBadge}>
-              <ShieldCheck size={20} color="#e2c992" />
+              <ShieldCheck size={20} color="#10b981" />
             </div>
             {!isCollapsed && (
               <div className={styles.brandGroup}>

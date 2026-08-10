@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   height: 50vh;
-  color: #9ca3af;
+  color: #94a3b8;
   font-family: var(--font-mono);
   font-size: 0.9rem;
 }
@@ -27,12 +27,12 @@
   font-family: var(--font-headline);
   font-size: 2.2rem;
   font-weight: 700;
-  color: #f3f4f6;
+  color: #f8fafc;
   margin-bottom: 4px;
 }
 
 .subtitle {
-  color: #9ca3af;
+  color: #94a3b8;
   font-size: 0.95rem;
 }
 
@@ -40,11 +40,11 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  background: #14151a;
-  border: 1px solid rgba(226, 201, 146, 0.25);
+  background: #111c2e;
+  border: 1px solid rgba(16, 185, 129, 0.25);
   padding: 8px 16px;
   border-radius: var(--radius-md);
-  color: #e2c992;
+  color: #10b981;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 600;
@@ -70,7 +70,7 @@
 }
 
 .statCard {
-  background: rgba(26, 28, 35, 0.7);
+  background: rgba(26, 43, 60, 0.7);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
@@ -83,7 +83,7 @@
 }
 
 .statCard:hover {
-  border-color: rgba(226, 201, 146, 0.3);
+  border-color: rgba(16, 185, 129, 0.35);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
@@ -100,7 +100,7 @@
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: #9ca3af;
+  color: #94a3b8;
 }
 
 .statMain {
@@ -113,7 +113,7 @@
   font-family: var(--font-mono);
   font-size: 2.2rem;
   font-weight: 700;
-  color: #e2c992;
+  color: #10b981;
   line-height: 1;
 }
 
@@ -121,20 +121,20 @@
   font-family: var(--font-mono);
   font-size: 2.2rem;
   font-weight: 700;
-  color: #f3f4f6;
+  color: #f8fafc;
   line-height: 1;
 }
 
 .denom {
   font-size: 1.2rem;
-  color: #6b7280;
+  color: #64748b;
 }
 
 .currencyTag {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 600;
-  color: #9ca3af;
+  color: #94a3b8;
 }
 
 .progressContainer {
@@ -147,14 +147,14 @@
 
 .progressBar {
   height: 100%;
-  background: linear-gradient(90deg, #e2c992 0%, #b59a5d 100%);
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
   border-radius: var(--radius-full);
 }
 
 .statSubText {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: #9ca3af;
+  color: #94a3b8;
   letter-spacing: 0.08em;
 }
 
@@ -203,7 +203,7 @@
 }
 
 .chartSection {
-  background: rgba(26, 28, 35, 0.7);
+  background: rgba(26, 43, 60, 0.7);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
@@ -221,7 +221,7 @@
   font-family: var(--font-headline);
   font-size: 1.3rem;
   font-weight: 700;
-  color: #f3f4f6;
+  color: #f8fafc;
   margin-bottom: 2px;
 }
 
@@ -229,7 +229,7 @@
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 600;
-  color: #9ca3af;
+  color: #94a3b8;
   letter-spacing: 0.1em;
 }
 
@@ -238,8 +238,8 @@
   align-items: center;
   gap: var(--space-2);
   background: transparent;
-  border: 1px solid rgba(226, 201, 146, 0.3);
-  color: #e2c992;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
   padding: 6px 14px;
   border-radius: var(--radius-md);
   font-family: var(--font-mono);
@@ -251,7 +251,7 @@
 }
 
 .exportBtn:hover {
-  background: rgba(226, 201, 146, 0.1);
+  background: rgba(16, 185, 129, 0.12);
 }
 
 .chartContainer {
@@ -261,7 +261,7 @@
 
 /* Payment Splits Vertical Timeline */
 .splitsSection {
-  background: rgba(26, 28, 35, 0.7);
+  background: rgba(26, 43, 60, 0.7);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
@@ -272,7 +272,7 @@
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 600;
-  color: #e2c992;
+  color: #10b981;
   letter-spacing: 0.1em;
   text-decoration: none;
 }
@@ -312,7 +312,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 2px solid #1a1c23;
+  border: 2px solid #1a2b3c;
 }
 
 .dotRed {
@@ -321,17 +321,17 @@
 }
 
 .dotGold {
-  background: #e2c992;
-  box-shadow: 0 0 8px rgba(226, 201, 146, 0.5);
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
 }
 
 .dotGreen {
-  background: #34d399;
-  box-shadow: 0 0 8px rgba(52, 211, 153, 0.5);
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
 }
 
 .timelineContent {
-  background: rgba(20, 21, 26, 0.6);
+  background: rgba(17, 28, 46, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
   padding: var(--space-4);
@@ -350,14 +350,13 @@
   font-family: var(--font-headline);
   font-size: 0.95rem;
   font-weight: 700;
-  color: #f3f4f6;
-
+  color: #f8fafc;
   margin: 0;
 }
 
 .tenantName {
   font-size: 0.8rem;
-  color: #9ca3af;
+  color: #94a3b8;
   margin: 0 0 var(--space-2) 0;
 }
 
@@ -377,15 +376,15 @@
 }
 
 .badgePending {
-  background: rgba(226, 201, 146, 0.15);
-  color: #e2c992;
-  border: 1px solid rgba(226, 201, 146, 0.3);
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .badgePaid {
-  background: rgba(52, 211, 153, 0.15);
-  color: #34d399;
-  border: 1px solid rgba(52, 211, 153, 0.3);
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .itemFooter {
@@ -399,7 +398,7 @@
 .splitNum {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  color: #9ca3af;
+  color: #94a3b8;
   letter-spacing: 0.05em;
 }
 
@@ -407,7 +406,7 @@
   font-family: var(--font-mono);
   font-size: 0.9rem;
   font-weight: 700;
-  color: #e2c992;
+  color: #10b981;
 }
 
 .dueDateRow {
@@ -426,8 +425,8 @@
   position: fixed;
   bottom: var(--space-8);
   right: var(--space-8);
-  background: linear-gradient(135deg, #e2c992 0%, #b59a5d 100%);
-  color: #0c0d10;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
   border-radius: var(--radius-full);
   padding: 14px 24px;
   display: flex;
@@ -438,12 +437,12 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
-  box-shadow: 0 10px 25px rgba(226, 201, 146, 0.3);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
   z-index: 50;
   transition: all 0.25s ease;
 }
 
 .fabBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(226, 201, 146, 0.45);
+  box-shadow: 0 14px 30px rgba(16, 185, 129, 0.45);
 }

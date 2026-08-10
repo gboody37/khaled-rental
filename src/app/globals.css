@@ -1,63 +1,62 @@
 /* ============================================
-   KHALED RENTALS — Luxury Multi-Theme Design System
-   Monaco Obsidian & Champagne Gold
+   KHALED RENTALS — Google Stitch Design System
+   Deep Navy Blue (#1A2B3C) & Emerald Green (#10B981)
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-/* 🏆 Theme 1: Monaco Obsidian & Champagne Gold (Default) */
 :root, [data-theme="obsidian"] {
-  --bg-base: #0c0d10;
-  --bg-surface: #121317;
-  --bg-surface-dim: #0d0e12;
-  --bg-surface-bright: #24262f;
-  --bg-container-lowest: #08080a;
-  --bg-container-low: #14151a;
-  --bg-container: #1a1c23;
-  --bg-container-high: #252833;
-  --bg-container-highest: #303342;
+  --bg-base: #0b1320;
+  --bg-surface: #0f172a;
+  --bg-surface-dim: #090e17;
+  --bg-surface-bright: #1e293b;
+  --bg-container-lowest: #070c14;
+  --bg-container-low: #111c2e;
+  --bg-container: #1a2b3c;
+  --bg-container-high: #24374c;
+  --bg-container-highest: #2d435c;
 
-  --clr-primary: #e2c992;
-  --clr-primary-container: #b59a5d;
-  --clr-primary-dim: #cbb27a;
-  --clr-on-primary: #0c0d10;
+  --clr-primary: #10b981;
+  --clr-primary-container: #059669;
+  --clr-primary-dim: #34d399;
+  --clr-on-primary: #ffffff;
   --clr-on-primary-container: #ffffff;
 
-  --clr-secondary: #c7c6cb;
-  --clr-secondary-container: #292a2e;
+  --clr-secondary: #38bdf8;
+  --clr-secondary-container: #1e293b;
   --clr-on-secondary: #ffffff;
 
-  --clr-tertiary: #c5c6cf;
-  --clr-tertiary-container: #1a1c23;
+  --clr-tertiary: #94a3b8;
+  --clr-tertiary-container: #1a2b3c;
 
-  --clr-on-surface: #f3f4f6;
-  --clr-on-surface-variant: #c7c6cb;
-  --clr-on-surface-muted: #9ca3af;
+  --clr-on-surface: #f8fafc;
+  --clr-on-surface-variant: #cbd5e1;
+  --clr-on-surface-muted: #64748b;
 
-  --clr-outline: rgba(226, 201, 146, 0.2);
+  --clr-outline: rgba(16, 185, 129, 0.25);
   --clr-outline-variant: rgba(255, 255, 255, 0.08);
-  --clr-surface-variant: #252833;
+  --clr-surface-variant: #1e293b;
 
-  --clr-error: #ffb4ab;
-  --clr-error-container: #93000a;
-  --clr-on-error: #690005;
+  --clr-error: #f87171;
+  --clr-error-container: #7f1d1d;
+  --clr-on-error: #ffffff;
 
-  --clr-success: #34d399;
-  --clr-success-bg: rgba(52, 211, 153, 0.12);
-  --clr-warning: #e2c992;
-  --clr-warning-bg: rgba(226, 201, 146, 0.12);
+  --clr-success: #10b981;
+  --clr-success-bg: rgba(16, 185, 129, 0.12);
+  --clr-warning: #f59e0b;
+  --clr-warning-bg: rgba(245, 158, 11, 0.12);
   --clr-danger: #f87171;
   --clr-danger-bg: rgba(248, 113, 113, 0.12);
-  --clr-info: #60a5fa;
-  --clr-info-bg: rgba(96, 165, 250, 0.12);
+  --clr-info: #38bdf8;
+  --clr-info-bg: rgba(56, 189, 248, 0.12);
 
-  --font-headline: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-headline: 'Inter', sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --glass-bg: rgba(26, 28, 35, 0.65);
+  --glass-bg: rgba(26, 43, 60, 0.75);
   --glass-blur: blur(16px);
-  --glass-border: 1px solid rgba(226, 201, 146, 0.18);
+  --glass-border: 1px solid rgba(16, 185, 129, 0.2);
   --card-radius: var(--radius-lg);
 }
 
@@ -65,7 +64,6 @@
   /* ── Spacing (8px grid) ── */
   --space-1: 4px;
   --space-2: 8px;
-
   --space-3: 12px;
   --space-4: 16px;
   --space-5: 20px;
@@ -213,13 +211,13 @@ a:hover {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #e2c992 0%, #b59a5d 100%);
-  color: #0c0d10;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
 }
 .btn-primary:hover {
   background: var(--clr-primary);
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(226, 201, 146, 0.3);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
 }
 
 .btn-secondary {
@@ -292,7 +290,7 @@ a:hover {
 .card:hover {
   border-color: var(--clr-primary);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4), 0 0 15px rgba(226, 201, 146, 0.12);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4), 0 0 15px rgba(16, 185, 129, 0.15);
 }
 
 .card-flat {
@@ -366,7 +364,7 @@ a:hover {
 .form-textarea {
   width: 100%;
   padding: var(--space-3) var(--space-4);
-  background-color: #14151a;
+  background-color: #111c2e;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
   color: var(--clr-on-surface);
@@ -379,8 +377,8 @@ a:hover {
 .form-select:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #e2c992;
-  box-shadow: 0 0 0 2px rgba(226, 201, 146, 0.2);
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
 }
 
 .form-input::placeholder,
@@ -431,7 +429,7 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;

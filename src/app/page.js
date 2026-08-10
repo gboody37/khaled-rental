@@ -7,7 +7,6 @@ import {
   Banknote,
   Building2, 
   AlertTriangle,
-  Send, 
   Calendar,
   Download,
   Plus
@@ -38,8 +37,8 @@ export default function Dashboard() {
 
         const ctx = chartRef.current.getContext('2d');
         const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-        gradient.addColorStop(0, '#e2c992');
-        gradient.addColorStop(1, 'rgba(181, 154, 93, 0.2)');
+        gradient.addColorStop(0, '#10b981');
+        gradient.addColorStop(1, 'rgba(16, 185, 129, 0.15)');
 
         chartInstance.current = new Chart(ctx, {
           type: 'bar',
@@ -47,9 +46,9 @@ export default function Dashboard() {
             labels: stats.months || ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
             datasets: [{
               label: 'Cashflow (JOD)',
-              data: stats.revenueData || [10000, 12000, 11000, 15000, 11000, 19000],
+              data: stats.revenueData || [0, 0, 0, 0, 0, 0],
               backgroundColor: gradient,
-              borderColor: '#e2c992',
+              borderColor: '#10b981',
               borderWidth: 1,
               borderRadius: 4,
               barPercentage: 0.55
@@ -61,10 +60,10 @@ export default function Dashboard() {
             plugins: {
               legend: { display: false },
               tooltip: {
-                backgroundColor: '#1a1c23',
-                titleColor: '#e2c992',
-                bodyColor: '#f3f4f6',
-                borderColor: 'rgba(226, 201, 146, 0.3)',
+                backgroundColor: '#1a2b3c',
+                titleColor: '#10b981',
+                bodyColor: '#f8fafc',
+                borderColor: 'rgba(16, 185, 129, 0.3)',
                 borderWidth: 1,
                 callbacks: {
                   label: function(context) {
@@ -78,7 +77,7 @@ export default function Dashboard() {
                 beginAtZero: true,
                 grid: { color: 'rgba(255, 255, 255, 0.05)' },
                 ticks: { 
-                  color: '#9ca3af',
+                  color: '#94a3b8',
                   font: { family: 'JetBrains Mono', size: 11 },
                   callback: function(val) { return val >= 1000 ? (val / 1000) + 'k' : val; }
                 }
@@ -86,7 +85,7 @@ export default function Dashboard() {
               x: {
                 grid: { display: false },
                 ticks: { 
-                  color: '#9ca3af',
+                  color: '#94a3b8',
                   font: { family: 'JetBrains Mono', size: 11 }
                 }
               }
@@ -104,40 +103,9 @@ export default function Dashboard() {
     }
   }, [stats]);
 
-  if (!stats) return <div className={styles.loading}>Loading Executive Dashboard...</div>;
+  if (!stats) return <div className={styles.loading}>Loading Dashboard...</div>;
 
-  const upcomingSplits = [
-    {
-      id: '1',
-      propertyName: 'Al-Hussein Apt 4',
-      tenantName: 'Ahmad Al-Masri',
-      amount: 3000,
-      splitNum: 2,
-      totalSplits: 4,
-      dueDate: 'DUE: OCT 15',
-      status: 'OVERDUE'
-    },
-    {
-      id: '2',
-      propertyName: 'Abdoun Villa B',
-      tenantName: 'Sara Haddad',
-      amount: 5000,
-      splitNum: 1,
-      totalSplits: 2,
-      dueDate: 'DUE: NOV 01',
-      status: 'PENDING'
-    },
-    {
-      id: '3',
-      propertyName: 'Dabouq Estate',
-      tenantName: 'Rania Kassem',
-      amount: 4000,
-      splitNum: 3,
-      totalSplits: 4,
-      dueDate: 'DUE: DEC 10',
-      status: 'PAID'
-    }
-  ];
+  const upcomingSplits = stats.upcomingSplits || [];
 
   return (
     <div className={styles.dashboard}>
@@ -145,11 +113,11 @@ export default function Dashboard() {
       <div className={styles.header}>
         <div>
           <h1 className={styles.title}>Overview</h1>
-          <p className={styles.subtitle}>Executive dashboard for elite property management.</p>
+          <p className={styles.subtitle}>Executive dashboard for property management.</p>
         </div>
         
         <div className={styles.datePickerBadge}>
-          <Calendar size={14} color="#e2c992" />
+          <Calendar size={14} color="#10b981" />
           <span>Nov 2026</span>
         </div>
       </div>
@@ -160,10 +128,10 @@ export default function Dashboard() {
         <div className={styles.statCard}>
           <div className={styles.statTop}>
             <span className={styles.statLabel}>TOTAL ANNUAL REVENUE</span>
-            <Landmark size={18} color="#e2c992" />
+            <Landmark size={18} color="#10b981" />
           </div>
           <div className={styles.statMain}>
-            <h2 className={styles.statGoldValue}>120,000</h2>
+            <h2 className={styles.statGoldValue}>{stats.totalAnnualRevenue || 0}</h2>
             <span className={styles.currencyTag}>JOD</span>
           </div>
         </div>
@@ -172,10 +140,10 @@ export default function Dashboard() {
         <div className={styles.statCard}>
           <div className={styles.statTop}>
             <span className={styles.statLabel}>MONTHLY CASHFLOW</span>
-            <Banknote size={18} color="#e2c992" />
+            <Banknote size={18} color="#10b981" />
           </div>
           <div className={styles.statMain}>
-            <h2 className={styles.statWhiteValue}>10,000</h2>
+            <h2 className={styles.statWhiteValue}>{stats.monthlyCashflow || 0}</h2>
             <span className={styles.currencyTag}>JOD</span>
           </div>
         </div>
@@ -184,13 +152,13 @@ export default function Dashboard() {
         <div className={styles.statCard}>
           <div className={styles.statTop}>
             <span className={styles.statLabel}>OCCUPANCY</span>
-            <Building2 size={18} color="#e2c992" />
+            <Building2 size={18} color="#10b981" />
           </div>
           <div className={styles.statMainRow}>
-            <h2 className={styles.statWhiteValue}>6<span className={styles.denom}> / 8</span></h2>
+            <h2 className={styles.statWhiteValue}>{stats.rentedUnits || 0}<span className={styles.denom}> / {stats.totalUnits || 0}</span></h2>
           </div>
           <div className={styles.progressContainer}>
-            <div className={styles.progressBar} style={{ width: '75%' }}></div>
+            <div className={styles.progressBar} style={{ width: `${stats.occupancyRate || 0}%` }}></div>
           </div>
           <p className={styles.statSubText}>PROPERTIES RENTED</p>
         </div>
@@ -202,7 +170,7 @@ export default function Dashboard() {
             <AlertTriangle size={18} color="#f87171" />
           </div>
           <div className={styles.statMain}>
-            <h2 className={styles.statRedValue}>1</h2>
+            <h2 className={styles.statRedValue}>{stats.overdueCount || 0}</h2>
           </div>
           <span className={styles.overdueBadge}>OVERDUE INSTALLMENT</span>
         </div>
@@ -232,42 +200,46 @@ export default function Dashboard() {
         <div className={styles.splitsSection}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Payment Splits</h2>
-            <Link href="/properties" className={styles.viewAllLink}>VIEW ALL</Link>
+            <Link href="/renters" className={styles.viewAllLink}>VIEW ALL</Link>
           </div>
 
           <div className={styles.timelineList}>
-            {upcomingSplits.map((split) => {
-              const statusBadgeClass = split.status === 'OVERDUE' ? styles.badgeOverdue :
-                                       split.status === 'PENDING' ? styles.badgePending :
-                                       styles.badgePaid;
-              
-              const dotClass = split.status === 'OVERDUE' ? styles.dotRed :
-                               split.status === 'PENDING' ? styles.dotGold :
-                               styles.dotGreen;
+            {upcomingSplits.length > 0 ? (
+              upcomingSplits.map((split) => {
+                const statusBadgeClass = split.status === 'OVERDUE' ? styles.badgeOverdue :
+                                         split.status === 'PENDING' ? styles.badgePending :
+                                         styles.badgePaid;
+                
+                const dotClass = split.status === 'OVERDUE' ? styles.dotRed :
+                                 split.status === 'PENDING' ? styles.dotGold :
+                                 styles.dotGreen;
 
-              return (
-                <div key={split.id} className={styles.timelineItem}>
-                  <div className={`${styles.timelineDot} ${dotClass}`}></div>
-                  <div className={styles.timelineContent}>
-                    <div className={styles.itemHeader}>
-                      <h4 className={styles.propertyName}>{split.propertyName}</h4>
-                      <span className={`${styles.statusBadge} ${statusBadgeClass}`}>{split.status}</span>
-                    </div>
-                    <p className={styles.tenantName}>{split.tenantName}</p>
-                    
-                    <div className={styles.itemFooter}>
-                      <span className={styles.splitNum}>SPLIT {split.splitNum} OF {split.totalSplits}</span>
-                      <div className={styles.amountWrap}>
-                        <span className={styles.amountVal}>{formatCurrency(split.amount)}</span>
+                return (
+                  <div key={split.id} className={styles.timelineItem}>
+                    <div className={`${styles.timelineDot} ${dotClass}`}></div>
+                    <div className={styles.timelineContent}>
+                      <div className={styles.itemHeader}>
+                        <h4 className={styles.propertyName}>{split.propertyName}</h4>
+                        <span className={`${styles.statusBadge} ${statusBadgeClass}`}>{split.status}</span>
+                      </div>
+                      <p className={styles.tenantName}>{split.tenantName}</p>
+                      
+                      <div className={styles.itemFooter}>
+                        <span className={styles.splitNum}>SPLIT {split.splitNum} OF {split.totalSplits}</span>
+                        <div className={styles.amountWrap}>
+                          <span className={styles.amountVal}>{formatCurrency(split.amount)}</span>
+                        </div>
+                      </div>
+                      <div className={styles.dueDateRow}>
+                        <span className={styles.dueDateVal}>{split.dueDate}</span>
                       </div>
                     </div>
-                    <div className={styles.dueDateRow}>
-                      <span className={styles.dueDateVal}>{split.dueDate}</span>
-                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })
+            ) : (
+              <p style={{ color: '#94a3b8', fontSize: '0.85rem', paddingTop: '12px' }}>No payment splits recorded yet. Add your first property to generate payment schedules!</p>
+            )}
           </div>
         </div>
       </div>
