@@ -9,7 +9,6 @@ import {
   User, 
   DollarSign, 
   Calendar, 
-  Clock, 
   Edit2, 
   Trash2 
 } from 'lucide-react';
@@ -124,23 +123,6 @@ export default function PropertiesPage() {
                       <span>Lease: {formatDate(property.rentalStart)} – {formatDate(property.rentalEnd)}</span>
                     </p>
                   )}
-
-                  {/* 💰 Prominent Payment Split Box */}
-                  <div className={styles.splitBreakdownBox}>
-                    <div className={styles.splitBoxHeader}>
-                      <Clock size={14} color="#e2c992" />
-                      <span>ANNUAL PAYMENT SPLIT STRUCTURE</span>
-                    </div>
-                    <div className={styles.splitBoxMain}>
-                      <span className={styles.splitBadgeVal}>{property.splitCount || 4} SPLITS PER YEAR</span>
-                      <span className={styles.splitAmountVal}>
-                        {formatCurrency(Math.round(property.annualRent / (property.splitCount || 4)))} / split
-                      </span>
-                    </div>
-                    <p className={styles.splitFrequencyText}>
-                      Installments due every {Math.round(12 / (property.splitCount || 4))} months ({property.splitCount || 4} total payments)
-                    </p>
-                  </div>
                 </div>
 
                 <div className={styles.cardActions}>
