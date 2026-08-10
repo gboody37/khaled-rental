@@ -2,6 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { 
+  Building2, 
+  Plus, 
+  MapPin, 
+  User, 
+  DollarSign, 
+  Calendar, 
+  Clock, 
+  Edit2, 
+  Trash2 
+} from 'lucide-react';
 import styles from './page.module.css';
 import { getProperties, getTenant, deleteProperty, formatCurrency, formatDate } from '@/lib/data';
 
@@ -53,17 +64,17 @@ export default function PropertiesPage() {
       <header className={styles.header}>
         <h1 className="headline-md">My Properties</h1>
         <Link href="/properties/new" className="btn btn-primary">
-          + Add Property
+          <Plus size={18} /> Add Property
         </Link>
       </header>
 
       {properties.length === 0 ? (
         <div className={styles.emptyState}>
-          <div className={styles.emptyIcon}>🏢</div>
+          <div className={styles.emptyIcon}><Building2 size={48} color="#8892a8" /></div>
           <h2 className="headline-sm">No properties yet</h2>
           <p className="text-muted" style={{ marginTop: 'var(--space-2)' }}>Add your first property to start managing rentals.</p>
           <Link href="/properties/new" className="btn btn-primary" style={{ marginTop: 'var(--space-4)' }}>
-            + Add Property
+            <Plus size={18} /> Add Property
           </Link>
         </div>
       ) : (
@@ -92,44 +103,55 @@ export default function PropertiesPage() {
 
                 <div className={styles.cardBody}>
                   <p className={styles.infoRow}>
-                    <span className={styles.icon}>📍</span> {property.address}
+                    <span className={styles.icon}><MapPin size={16} color="#e2c992" /></span> {property.address}
                   </p>
                   
                   {isOccupied && tenant && (
                     <p className={styles.infoRow}>
-                      <span className={styles.icon}>👤</span> {tenant.name}
+                      <span className={styles.icon}><User size={16} color="#38bdf8" /></span> 
+                      <span>Tenant: <strong>{tenant.name}</strong></span>
                     </p>
                   )}
                   
                   <p className={styles.infoRow}>
-                    <span className={styles.icon}>💰</span> 
-                    <strong>{formatCurrency(property.annualRent)}</strong> / year
+                    <span className={styles.icon}><DollarSign size={16} color="#34d399" /></span> 
+                    <span>Annual Rent: <strong>{formatCurrency(property.annualRent)}</strong></span>
                   </p>
                   
-                  {property.startDate && property.endDate && (
+                  {property.rentalStart && property.rentalEnd && (
                     <p className={styles.infoRow}>
-                      <span className={styles.icon}>📅</span> 
-                      {formatDate(property.startDate)} - {formatDate(property.endDate)}
+                      <span className={styles.icon}><Calendar size={16} color="#a855f7" /></span> 
+                      <span>Lease: {formatDate(property.rentalStart)} – {formatDate(property.rentalEnd)}</span>
                     </p>
                   )}
-                  
-                  {property.paymentSplits && (
-                    <p className={styles.infoRow}>
-                      <span className={styles.icon}>⏱️</span>
-                      {property.paymentSplits} splits of {formatCurrency(property.annualRent / property.paymentSplits)}
+
+                  {/* 💰 Prominent Payment Split Box */}
+                  <div className={styles.splitBreakdownBox}>
+                    <div className={styles.splitBoxHeader}>
+                      <Clock size={14} color="#e2c992" />
+                      <span>ANNUAL PAYMENT SPLIT STRUCTURE</span>
+                    </div>
+                    <div className={styles.splitBoxMain}>
+                      <span className={styles.splitBadgeVal}>{property.splitCount || 4} SPLITS PER YEAR</span>
+                      <span className={styles.splitAmountVal}>
+                        {formatCurrency(Math.round(property.annualRent / (property.splitCount || 4)))} / split
+                      </span>
+                    </div>
+                    <p className={styles.splitFrequencyText}>
+                      Installments due every {Math.round(12 / (property.splitCount || 4))} months ({property.splitCount || 4} total payments)
                     </p>
-                  )}
+                  </div>
                 </div>
 
                 <div className={styles.cardActions}>
                   <Link href={`/properties/${property.id}/edit`} className="btn btn-secondary btn-sm">
-                    Edit
+                    <Edit2 size={14} /> Edit Property
                   </Link>
                   <button 
                     onClick={() => confirmDelete(property)} 
                     className="btn btn-danger btn-sm"
                   >
-                    Delete
+                    <Trash2 size={14} /> Delete
                   </button>
                 </div>
               </div>
