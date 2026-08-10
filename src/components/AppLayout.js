@@ -13,7 +13,8 @@ import {
   X, 
   ChevronLeft, 
   ChevronRight, 
-  Menu 
+  Menu,
+  Palette
 } from 'lucide-react';
 import styles from './AppLayout.module.css';
 
@@ -21,11 +22,22 @@ export default function AppLayout({ children }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState('obsidian');
   const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
+    const savedTheme = localStorage.getItem('app_theme') || 'obsidian';
+    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'obsidian' ? 'nordic' : 'obsidian';
+    setTheme(nextTheme);
+    localStorage.setItem('app_theme', nextTheme);
+    document.documentElement.setAttribute('data-theme', nextTheme);
+  };
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -70,7 +82,7 @@ export default function AppLayout({ children }) {
       <aside className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''} ${isMobileOpen ? styles.mobileOpen : ''}`}>
         <div className={styles.sidebarHeader}>
           <div className={styles.logo}>
-            <span className={styles.logoIcon}><Home size={22} color="#f59e0b" /></span>
+            <span className={styles.logoIcon}><Home size={22} color="var(--clr-primary)" /></span>
             {!isCollapsed && <span className={styles.logoText}>Khaled Rentals</span>}
           </div>
           <button className={styles.closeMobileBtn} onClick={toggleMobileSidebar}>
@@ -116,6 +128,17 @@ export default function AppLayout({ children }) {
           
           <div className={styles.topbarRight}>
             <span className={styles.currentDate}>{currentDate}</span>
+            
+            {/* Live Theme Switcher */}
+            <button 
+              onClick={toggleTheme} 
+              className={styles.themeToggleBtn}
+              title="Click to switch between Monaco Obsidian and Nordic Slate themes"
+            >
+              <Palette size={16} />
+              <span>{theme === 'obsidian' ? 'Monaco Gold' : 'Nordic Bronze'}</span>
+            </button>
+
             <button className={styles.notificationBtn}>
               <Bell size={20} />
               <span className={styles.notificationBadge}>3</span>
