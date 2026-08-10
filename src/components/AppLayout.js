@@ -3,6 +3,18 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { 
+  LayoutDashboard, 
+  Building2, 
+  Users, 
+  Bell, 
+  Settings, 
+  Home, 
+  X, 
+  ChevronLeft, 
+  ChevronRight, 
+  Menu 
+} from 'lucide-react';
 import styles from './AppLayout.module.css';
 
 export default function AppLayout({ children }) {
@@ -28,11 +40,11 @@ export default function AppLayout({ children }) {
   };
 
   const navItems = [
-    { name: 'Dashboard', path: '/', icon: '📊' },
-    { name: 'Properties', path: '/properties', icon: '🏘️' },
-    { name: 'Renters', path: '/renters', icon: '👥' },
-    { name: 'Notifications', path: '/notifications', icon: '🔔' },
-    { name: 'Settings', path: '/settings', icon: '⚙️' },
+    { name: 'Dashboard', path: '/', icon: LayoutDashboard },
+    { name: 'Properties', path: '/properties', icon: Building2 },
+    { name: 'Renters', path: '/renters', icon: Users },
+    { name: 'Notifications', path: '/notifications', icon: Bell },
+    { name: 'Settings', path: '/settings', icon: Settings },
   ];
 
   const getPageTitle = () => {
@@ -58,17 +70,18 @@ export default function AppLayout({ children }) {
       <aside className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''} ${isMobileOpen ? styles.mobileOpen : ''}`}>
         <div className={styles.sidebarHeader}>
           <div className={styles.logo}>
-            <span className={styles.logoIcon}>🏠</span>
+            <span className={styles.logoIcon}><Home size={22} color="#f59e0b" /></span>
             {!isCollapsed && <span className={styles.logoText}>Khaled Rentals</span>}
           </div>
           <button className={styles.closeMobileBtn} onClick={toggleMobileSidebar}>
-            ✖️
+            <X size={20} />
           </button>
         </div>
 
         <nav className={styles.nav}>
           {navItems.map((item) => {
             const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
+            const Icon = item.icon;
             return (
               <Link 
                 href={item.path} 
@@ -77,7 +90,7 @@ export default function AppLayout({ children }) {
                 onClick={closeMobileSidebar}
                 title={isCollapsed ? item.name : ''}
               >
-                <span className={styles.navIcon}>{item.icon}</span>
+                <span className={styles.navIcon}><Icon size={20} /></span>
                 {!isCollapsed && <span className={styles.navText}>{item.name}</span>}
               </Link>
             );
@@ -86,7 +99,7 @@ export default function AppLayout({ children }) {
 
         <div className={styles.sidebarFooter}>
           <button className={styles.collapseBtn} onClick={toggleSidebar}>
-            {isCollapsed ? '➡️' : '⬅️ Collapse'}
+            {isCollapsed ? <ChevronRight size={18} /> : <><ChevronLeft size={18} /> Collapse</>}
           </button>
         </div>
       </aside>
@@ -96,7 +109,7 @@ export default function AppLayout({ children }) {
         <header className={styles.topbar}>
           <div className={styles.topbarLeft}>
             <button className={styles.mobileMenuBtn} onClick={toggleMobileSidebar}>
-              ☰
+              <Menu size={22} />
             </button>
             <h1 className={styles.pageTitle}>{getPageTitle()}</h1>
           </div>
@@ -104,7 +117,7 @@ export default function AppLayout({ children }) {
           <div className={styles.topbarRight}>
             <span className={styles.currentDate}>{currentDate}</span>
             <button className={styles.notificationBtn}>
-              🔔
+              <Bell size={20} />
               <span className={styles.notificationBadge}>3</span>
             </button>
           </div>
