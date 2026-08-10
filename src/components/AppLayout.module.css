@@ -5,6 +5,7 @@
   overflow: hidden;
   background-color: var(--bg-base);
   color: var(--clr-on-surface);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .sidebar {
@@ -13,7 +14,7 @@
   border-right: 1px solid var(--bg-container-high);
   display: flex;
   flex-direction: column;
-  transition: width 0.3s ease, transform 0.3s ease;
+  transition: width 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
   z-index: 40;
 }
 
@@ -91,7 +92,7 @@
 }
 
 .navItem.active {
-  background-color: rgba(245, 158, 11, 0.1);
+  background-color: var(--clr-warning-bg);
   color: var(--clr-primary);
   font-weight: 600;
   border-left: 3px solid var(--clr-primary);
@@ -155,6 +156,7 @@
   justify-content: space-between;
   padding: 0 var(--space-6);
   z-index: 30;
+  transition: background-color 0.3s ease;
 }
 
 .topbarLeft {
@@ -184,7 +186,29 @@
 .topbarRight {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
+}
+
+.themeToggleBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--bg-container);
+  border: 1px solid var(--clr-outline);
+  color: var(--clr-primary);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.themeToggleBtn:hover {
+  background: var(--bg-container-high);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .currentDate {
@@ -240,6 +264,7 @@
   overflow-y: auto;
   padding: var(--space-6);
   background-color: var(--bg-base);
+  transition: background-color 0.3s ease;
 }
 
 .overlay {
