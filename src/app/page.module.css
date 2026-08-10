@@ -38,20 +38,23 @@
 }
 
 .statCard {
-  background: var(--bg-container);
-  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--card-radius);
   padding: var(--space-6);
   display: flex;
   align-items: flex-start;
   gap: var(--space-4);
-  border: 1px solid var(--bg-container-high);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  border: var(--glass-border);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .statCard:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: var(--clr-primary);
+  box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.4), 0 0 15px rgba(226, 201, 146, 0.15);
 }
 
 .statIcon {
