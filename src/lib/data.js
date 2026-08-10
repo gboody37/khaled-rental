@@ -1,141 +1,13 @@
 /* ============================================
-   Data Layer — localStorage Persistence
+   Data Layer — Persistence & Database Ready
    Khaled Rental Management App
    ============================================ */
 
-// ── Default Data ──
-const DEFAULT_PROPERTIES = [
-  {
-    id: '1',
-    name: 'Al-Hussein Apartment 4',
-    address: 'Al-Hussein Street, Amman',
-    type: 'Apartment',
-    annualRent: 12000,
-    rentalStart: '2026-01-01',
-    rentalEnd: '2026-12-31',
-    splitCount: 4,
-    status: 'Occupied',
-    tenantId: '1',
-    notes: 'Recently renovated, 3 bedrooms',
-    createdAt: '2026-01-01'
-  },
-  {
-    id: '2',
-    name: 'Jabal Amman Villa',
-    address: 'Rainbow Street 45, Jabal Amman',
-    type: 'Villa',
-    annualRent: 24000,
-    rentalStart: '2026-03-01',
-    rentalEnd: '2027-02-28',
-    splitCount: 3,
-    status: 'Occupied',
-    tenantId: '2',
-    notes: 'Luxury villa with garden',
-    createdAt: '2026-03-01'
-  },
-  {
-    id: '3',
-    name: 'Abdali Commercial Unit',
-    address: 'Abdali Boulevard, Amman',
-    type: 'Commercial',
-    annualRent: 18000,
-    rentalStart: '2026-02-01',
-    rentalEnd: '2027-01-31',
-    splitCount: 4,
-    status: 'Occupied',
-    tenantId: '3',
-    notes: 'Ground floor shop space',
-    createdAt: '2026-02-01'
-  },
-  {
-    id: '4',
-    name: 'Sweifieh Studio 12',
-    address: 'Wasfi Al-Tal Street, Sweifieh',
-    type: 'Apartment',
-    annualRent: 6000,
-    rentalStart: '2026-06-01',
-    rentalEnd: '2027-05-31',
-    splitCount: 2,
-    status: 'Occupied',
-    tenantId: '4',
-    notes: 'Cozy studio near the mall',
-    createdAt: '2026-06-01'
-  },
-  {
-    id: '5',
-    name: 'Dabouq Family House',
-    address: 'Dabouq Hills, Amman',
-    type: 'House',
-    annualRent: 15000,
-    rentalStart: '2025-09-01',
-    rentalEnd: '2026-08-31',
-    splitCount: 3,
-    status: 'Occupied',
-    tenantId: '5',
-    notes: 'Spacious family home with parking',
-    createdAt: '2025-09-01'
-  },
-  {
-    id: '6',
-    name: 'Mecca Street Office',
-    address: 'Mecca Street 78, Amman',
-    type: 'Commercial',
-    annualRent: 9600,
-    rentalStart: '',
-    rentalEnd: '',
-    splitCount: 4,
-    status: 'Vacant',
-    tenantId: null,
-    notes: 'Available for lease, 2nd floor',
-    createdAt: '2026-05-01'
-  },
-  {
-    id: '7',
-    name: 'Khalda Apartment 8',
-    address: 'Gardens Street, Khalda',
-    type: 'Apartment',
-    annualRent: 8400,
-    rentalStart: '2026-04-01',
-    rentalEnd: '2027-03-31',
-    splitCount: 4,
-    status: 'Occupied',
-    tenantId: '6',
-    notes: '2 bedrooms, furnished',
-    createdAt: '2026-04-01'
-  },
-  {
-    id: '8',
-    name: 'Shmeisani Penthouse',
-    address: 'King Abdullah II Street, Shmeisani',
-    type: 'Apartment',
-    annualRent: 30000,
-    rentalStart: '',
-    rentalEnd: '',
-    splitCount: 6,
-    status: 'Vacant',
-    tenantId: null,
-    notes: 'Luxury penthouse with city view',
-    createdAt: '2026-07-01'
-  }
-];
-
-const DEFAULT_TENANTS = [
-  { id: '1', name: 'Ahmad Al-Masri', phone: '+962 79 123 4567', email: 'ahmad@email.com', propertyId: '1', status: 'Active', createdAt: '2026-01-01' },
-  { id: '2', name: 'Sara Khalil', phone: '+962 78 234 5678', email: 'sara@email.com', propertyId: '2', status: 'Active', createdAt: '2026-03-01' },
-  { id: '3', name: 'Omar Trading Co.', phone: '+962 79 345 6789', email: 'omar@trading.com', propertyId: '3', status: 'Active', createdAt: '2026-02-01' },
-  { id: '4', name: 'Layla Abu Rashed', phone: '+962 77 456 7890', email: 'layla@email.com', propertyId: '4', status: 'Active', createdAt: '2026-06-01' },
-  { id: '5', name: 'Khaled Nasser', phone: '+962 79 567 8901', email: 'knasser@email.com', propertyId: '5', status: 'Active', createdAt: '2025-09-01' },
-  { id: '6', name: 'Rania Suleiman', phone: '+962 78 678 9012', email: 'rania@email.com', propertyId: '7', status: 'Active', createdAt: '2026-04-01' },
-  { id: '7', name: 'Fadi Qasem', phone: '+962 79 789 0123', email: 'fadi@email.com', propertyId: null, status: 'Past', createdAt: '2025-01-01' },
-  { id: '8', name: 'Nour Haddad', phone: '+962 77 890 1234', email: 'nour@email.com', propertyId: null, status: 'Past', createdAt: '2025-03-01' },
-];
-
+// ── Default Clean State ──
+const DEFAULT_PROPERTIES = [];
+const DEFAULT_TENANTS = [];
 const DEFAULT_PAYMENTS = [];
-const DEFAULT_NOTIFICATIONS = [
-  { id: '1', recipientType: 'Owner', recipientId: 'khaled', recipientName: 'Khaled (Owner)', subject: 'Monthly Revenue Report', message: 'Total revenue for July 2026 is 8,450 JOD. All properties are performing well. 2 payments are pending for next month.', priority: 'Normal', status: 'Read', sentAt: '2026-07-31T10:00:00' },
-  { id: '2', recipientType: 'Tenant', recipientId: '1', recipientName: 'Ahmad Al-Masri', subject: 'Payment Reminder', message: 'Your next rent payment of 3,000 JOD is due on August 1st. Please ensure timely payment.', priority: 'Normal', status: 'Delivered', sentAt: '2026-07-28T09:00:00' },
-  { id: '3', recipientType: 'Owner', recipientId: 'khaled', recipientName: 'Khaled (Owner)', subject: 'New Tenant Signed', message: 'Rania Suleiman has signed the lease for Khalda Apartment 8. Rental period: April 2026 - March 2027.', priority: 'Normal', status: 'Read', sentAt: '2026-04-01T14:00:00' },
-];
+const DEFAULT_NOTIFICATIONS = [];
 
 // ── Generate payment splits for a property ──
 function generatePaymentSplits(property) {
@@ -150,13 +22,7 @@ function generatePaymentSplits(property) {
 
   for (let i = 0; i < property.splitCount; i++) {
     const dueDate = new Date(startDate.getTime() + intervalDays * (i + 1) * (1000 * 60 * 60 * 24));
-    const today = new Date();
     let status = 'Pending';
-
-    // Auto-set status based on dates for demo
-    if (dueDate < today) {
-      status = Math.random() > 0.2 ? 'Paid' : 'Overdue';
-    }
 
     splits.push({
       id: `${property.id}-split-${i + 1}`,
@@ -164,7 +30,7 @@ function generatePaymentSplits(property) {
       tenantId: property.tenantId,
       amount: splitAmount,
       dueDate: dueDate.toISOString().split('T')[0],
-      paidDate: status === 'Paid' ? new Date(dueDate.getTime() - Math.random() * 5 * 86400000).toISOString().split('T')[0] : null,
+      paidDate: null,
       status: status,
       splitNumber: i + 1,
       totalSplits: property.splitCount
@@ -178,20 +44,12 @@ function generatePaymentSplits(property) {
 function initializeData() {
   if (typeof window === 'undefined') return;
 
-  if (!localStorage.getItem('rental_initialized')) {
+  if (!localStorage.getItem('rental_v2_clean')) {
     localStorage.setItem('rental_properties', JSON.stringify(DEFAULT_PROPERTIES));
     localStorage.setItem('rental_tenants', JSON.stringify(DEFAULT_TENANTS));
     localStorage.setItem('rental_notifications', JSON.stringify(DEFAULT_NOTIFICATIONS));
-
-    // Generate payment splits for all occupied properties
-    const allSplits = [];
-    DEFAULT_PROPERTIES.forEach(p => {
-      if (p.status === 'Occupied') {
-        allSplits.push(...generatePaymentSplits(p));
-      }
-    });
-    localStorage.setItem('rental_payments', JSON.stringify(allSplits));
-    localStorage.setItem('rental_initialized', 'true');
+    localStorage.setItem('rental_payments', JSON.stringify(DEFAULT_PAYMENTS));
+    localStorage.setItem('rental_v2_clean', 'true');
   }
 }
 
@@ -268,11 +126,6 @@ export function saveTenant(tenant) {
   return tenant;
 }
 
-export function deleteTenant(id) {
-  const tenants = getTenants().filter(t => t.id !== id);
-  localStorage.setItem('rental_tenants', JSON.stringify(tenants));
-}
-
 // Payments
 export function getPayments() {
   initializeData();
@@ -282,14 +135,13 @@ export function getPayments() {
 
 export function updatePaymentStatus(paymentId, status) {
   const payments = getPayments();
-  const idx = payments.findIndex(p => p.id === paymentId);
-  if (idx >= 0) {
-    payments[idx].status = status;
-    if (status === 'Paid') {
-      payments[idx].paidDate = new Date().toISOString().split('T')[0];
-    }
+  const payment = payments.find(p => p.id === paymentId);
+  if (payment) {
+    payment.status = status;
+    payment.paidDate = status === 'Paid' ? new Date().toISOString().split('T')[0] : null;
     localStorage.setItem('rental_payments', JSON.stringify(payments));
   }
+  return payment;
 }
 
 // Notifications
@@ -316,7 +168,7 @@ export function getDashboardStats() {
   const payments = getPayments();
 
   const occupiedProperties = properties.filter(p => p.status === 'Occupied');
-  const totalAnnualRevenue = occupiedProperties.reduce((sum, p) => sum + p.annualRent, 0);
+  const totalAnnualRevenue = occupiedProperties.reduce((sum, p) => sum + (p.annualRent || 0), 0);
   const monthlyRevenue = Math.round(totalAnnualRevenue / 12);
   const activeRenters = tenants.filter(t => t.status === 'Active').length;
   const pendingSplits = payments.filter(p => p.status === 'Pending').length;
@@ -324,14 +176,13 @@ export function getDashboardStats() {
 
   // Monthly revenue data for chart (simulated for past 6 months)
   const months = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
-  const revenueData = months.map((_, i) => {
+  const revenueData = months.map(() => {
     const base = monthlyRevenue;
     const variance = Math.round(base * (0.85 + Math.random() * 0.3));
     return variance;
   });
 
   // Upcoming payments
-  const today = new Date();
   const upcomingPayments = payments
     .filter(p => p.status === 'Pending' || p.status === 'Overdue')
     .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
@@ -357,18 +208,25 @@ export function getDashboardStats() {
   ];
 
   return {
-    totalRevenue: totalAnnualRevenue,
-    monthlyRevenue,
+    totalRevenue: totalAnnualRevenue || 0,
+    totalAnnualRevenue: totalAnnualRevenue || 0,
+    monthlyRevenue: monthlyRevenue || 0,
+    monthlyCashflow: monthlyRevenue || 0,
     activeProperties: occupiedProperties.length,
+    rentedUnits: occupiedProperties.length,
     vacantProperties: properties.length - occupiedProperties.length,
     totalProperties: properties.length,
-    activeRenters,
-    pendingSplits,
-    overdueSplits,
-    months,
-    revenueData,
-    upcomingPayments,
-    recentActivity
+    totalUnits: properties.length,
+    occupancyRate: properties.length > 0 ? Math.round((occupiedProperties.length / properties.length) * 100) : 0,
+    activeRenters: activeRenters || 0,
+    pendingSplits: pendingSplits || 0,
+    overdueSplits: overdueSplits || 0,
+    overdueCount: overdueSplits || 0,
+    months: months || ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+    revenueData: revenueData || [0, 0, 0, 0, 0, 0],
+    upcomingPayments: upcomingPayments || [],
+    upcomingSplits: upcomingPayments || [],
+    recentActivity: recentActivity || []
   };
 }
 
@@ -377,7 +235,7 @@ export function formatCurrency(amount) {
   return new Intl.NumberFormat('en-JO', {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
-  }).format(amount) + ' JOD';
+  }).format(amount || 0) + ' JOD';
 }
 
 export function formatDate(dateStr) {
@@ -418,6 +276,8 @@ export function calculateSplitPreview(annualRent, splitCount, startDate, endDate
 
 // Reset all data to defaults
 export function resetData() {
+  if (typeof window === 'undefined') return;
+  localStorage.removeItem('rental_v2_clean');
   localStorage.removeItem('rental_initialized');
   localStorage.removeItem('rental_properties');
   localStorage.removeItem('rental_tenants');
