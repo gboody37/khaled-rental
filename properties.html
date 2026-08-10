@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Properties - Khaled Rental Management</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#8192a7",
+                      "surface-variant": "#d3e4fe",
+                      "secondary": "#006c49",
+                      "tertiary-container": "#272a2c",
+                      "tertiary-fixed": "#e0e3e5",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-error": "#ffffff",
+                      "surface-container-high": "#dce9ff",
+                      "surface": "#f8f9ff",
+                      "inverse-surface": "#213145",
+                      "surface-tint": "#4f6073",
+                      "primary": "#041627",
+                      "secondary-container": "#6cf8bb",
+                      "on-secondary-fixed-variant": "#005236",
+                      "inverse-primary": "#b7c8de",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed": "#d2e4fb",
+                      "primary-container": "#1a2b3c",
+                      "surface-container-lowest": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#191c1e",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#eff4ff",
+                      "surface-bright": "#f8f9ff",
+                      "on-secondary-fixed": "#002113",
+                      "on-surface": "#0b1c30",
+                      "background": "#f8f9ff",
+                      "on-surface-variant": "#44474c",
+                      "surface-dim": "#cbdbf5",
+                      "secondary-fixed": "#6ffbbe",
+                      "tertiary-fixed-dim": "#c4c7c9",
+                      "on-secondary-container": "#00714d",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-background": "#0b1c30",
+                      "outline": "#74777d",
+                      "tertiary": "#121617",
+                      "primary-fixed-dim": "#b7c8de",
+                      "surface-container": "#e5eeff",
+                      "on-tertiary-fixed-variant": "#444749",
+                      "on-primary-fixed": "#0b1d2d",
+                      "outline-variant": "#c4c6cd",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#38485a",
+                      "on-tertiary-container": "#8e9193"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "margin-edge": "32px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "gutter": "24px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "xl": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "code-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-lg": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "code-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-sans antialiased pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant shadow-sm z-40 hidden md:flex">
+<div class="flex justify-between items-center px-margin-edge h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<!-- Brand Logo -->
+<h1 class="font-headline-md text-headline-md font-bold text-primary">EstateMaster</h1>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex ml-8 gap-1">
+<a class="px-4 py-2 rounded-lg font-title-lg text-title-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-95 duration-150" href="#">
+                        Dashboard
+                    </a>
+<a class="px-4 py-2 rounded-lg font-title-lg text-title-lg text-primary bg-surface-container-low transition-colors cursor-pointer active:scale-95 duration-150" href="#">
+                        Properties
+                    </a>
+<a class="px-4 py-2 rounded-lg font-title-lg text-title-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-95 duration-150" href="#">
+                        Tenants
+                    </a>
+<a class="px-4 py-2 rounded-lg font-title-lg text-title-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-95 duration-150" href="#">
+                        Maintenance
+                    </a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant cursor-pointer active:scale-95 duration-150">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a property manager in a well-lit modern office setting. Sharp focus, high resolution, corporate aesthetic. Soft, bright lighting conveying trust and competence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQe_UutnQSMpoh30vOc8K5Hm_0KtVDXyJzhOYaoAGKSMzoyk84vhPYMUs2LBtyj68ekY3QzGDe1VsqoD_rsCx-v2y9WhN7jnSBd7Jy14phkXf9BR3rLPUTOS7HsSEiHIeLfPOwNW1wIXWIv0SDYdD78tZ3DgoPt7edUBF-H-kyS7tgyDmmRkDSV_Ll4leg8FJ6Mdv5q9dxadDJ6f9nAh79xE-sLzKc7EqU2l2vEvJKbFRjET0kiI72"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Mobile Top Header -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant shadow-sm z-40 md:hidden flex justify-between items-center px-4 h-16">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Properties</h1>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="max-w-7xl mx-auto px-4 md:px-margin-edge py-lg md:py-xl">
+<!-- Header & Search Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary hidden md:block">Properties</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage and track your real estate portfolio.</p>
+</div>
+<div class="w-full md:w-auto flex flex-col sm:flex-row gap-3">
+<div class="relative w-full sm:w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition-shadow outline-none placeholder:text-outline" placeholder="Search addresses, units..." type="text"/>
+</div>
+<button class="flex items-center justify-center gap-2 px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-title-lg hover:bg-surface-container-low transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+                    Filter
+                </button>
+<button class="hidden md:flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-secondary text-on-secondary font-title-lg hover:bg-on-secondary-fixed-variant transition-colors shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                    Add Property
+                </button>
+</div>
+</div>
+<!-- Property Grid (Bento/Card Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Card 1: Occupied -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_6px_rgba(0,0,0,0.05)] overflow-hidden group hover:shadow-[0_10px_15px_rgba(0,0,0,0.1)] transition-shadow duration-200 cursor-pointer flex flex-col h-full relative">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="1248 Vista Ridge" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Exterior view of a modern luxury apartment building with large glass windows and clean architectural lines. Sunny day, clear blue sky, high end real estate photography, bright lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9dDaPF8gdVZhuIFDWBSX_73P-tRqu_TZOpuGJLoeSTiCFr-Fb95TNijm3_zNHsg-dtNvyQnclBmR9NOx0p1dp2rcHWaIErjyj8VL-veA8yVOGMU9L_K09K-IyNbXavVTvjmG_iYhFcz73iuiclKHlCXSHsmWAglP7BqGDzYFJ1cNQxYjRlNTr_HausCG36uHBuGhwdtIRvaci81p5ePzH4eHRjmK1SvkTzBwYSO2zATlINZ0l95Si"/>
+<div class="absolute top-3 right-3 bg-secondary-container text-on-secondary-container font-label-md text-label-md px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] filled" data-icon="check_circle">check_circle</span>
+                        Occupied
+                    </div>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<h3 class="font-title-lg text-title-lg text-primary mb-1 truncate">1248 Vista Ridge</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 truncate">Apt 4B • Portland, OR</p>
+<div class="mt-auto grid grid-cols-2 gap-4 border-t border-outline-variant pt-4">
+<div>
+<p class="font-label-md text-label-md text-outline uppercase">Rent</p>
+<p class="font-headline-md text-headline-md text-primary">$2,450</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-outline uppercase">Tenant</p>
+<p class="font-body-lg text-body-lg text-primary font-medium truncate">Sarah J.</p>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Vacant -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_6px_rgba(0,0,0,0.05)] overflow-hidden group hover:shadow-[0_10px_15px_rgba(0,0,0,0.1)] transition-shadow duration-200 cursor-pointer flex flex-col h-full relative">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="890 Maple Drive" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A charming single family home with a well manicured lawn and a welcoming front porch. Residential neighborhood, daytime, bright sunny lighting, professional real estate shot." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyEnP-6x8Sil2w5ZuYF-6AE_3pBM6xBE_1Ruga8DHP9wowJBW5lDskrjq3fGooWXgRQR8Mn13qvaRSD6uQboLxGBJabVfUzMrxSC-P-86kgbm2GDBFRfCsK9BBhbLjdleUSjMfwLEPV63fXQ4ZvJKyKZRRTaO7wy2ox429UOy3AdCeWRU0WhyDAsXHO0qPvCUTErI8zXFE40VDqcBwj-bg6nj5YzQ2zTqT02T8e2_7h5bB1zHTkKEI"/>
+<div class="absolute top-3 right-3 bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-md text-label-md px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="key">key</span>
+                        Vacant
+                    </div>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<h3 class="font-title-lg text-title-lg text-primary mb-1 truncate">890 Maple Drive</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 truncate">Single Family • Austin, TX</p>
+<div class="mt-auto grid grid-cols-2 gap-4 border-t border-outline-variant pt-4">
+<div>
+<p class="font-label-md text-label-md text-outline uppercase">Listed</p>
+<p class="font-headline-md text-headline-md text-primary">$3,200</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-outline uppercase">Days on Mkt</p>
+<p class="font-body-lg text-body-lg text-primary font-medium">14 Days</p>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3: Maintenance -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_6px_rgba(0,0,0,0.05)] overflow-hidden group hover:shadow-[0_10px_15px_rgba(0,0,0,0.1)] transition-shadow duration-200 cursor-pointer flex flex-col h-full relative">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Studio 54, The Foundry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Interior view of a modern loft apartment featuring exposed brick walls, high ceilings, and large industrial windows. Bright natural light, contemporary design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7qY9hzQhCzgQuHruaF3hBNsH6gOseAGgNjjsbt79FgCnzAPrgvFFQ-_siwreGcln-_XGZkFXD8ixTkrHyEi1dD34jN-EvzDUY1gW6HIqR-huByjUNC2BP42k90fmUKXfUSipj5yy8q3akZeI5xfoB3KLu-68KkwqF7dpjdXC-7TPUyofJUPEmMvXy5cQRIImN3y2q_AAO-VsYO1dhjy0a68oATudynPdLEzeDCZI5wpr2rc2l2mBC"/>
+<div class="absolute top-3 right-3 bg-[#FFEDD5] text-[#9A3412] font-label-md text-label-md px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] filled" data-icon="build">build</span>
+                        Maintenance
+                    </div>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<h3 class="font-title-lg text-title-lg text-primary mb-1 truncate">Studio 54, The Foundry</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 truncate">Loft • Chicago, IL</p>
+<div class="mt-auto grid grid-cols-2 gap-4 border-t border-outline-variant pt-4">
+<div class="col-span-2">
+<p class="font-label-md text-label-md text-outline uppercase mb-1">Active Issue</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-[#9A3412]" data-icon="water_drop">water_drop</span>
+<p class="font-body-md text-body-md text-primary truncate">HVAC Leak - Plumber scheduled</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4: Occupied -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_6px_rgba(0,0,0,0.05)] overflow-hidden group hover:shadow-[0_10px_15px_rgba(0,0,0,0.1)] transition-shadow duration-200 cursor-pointer flex flex-col h-full relative">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="402 Pine St" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A contemporary townhouse exterior with a small front garden and paved driveway. Overcast but bright lighting, clean modern suburban neighborhood feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLob1qofD4t-JNbF3K9xWpJXzv6aM_elAy1eVn7_QkYlNopYZ6cznSdxCZLdcKL9tyBWyNunj3j70UB7YOEEoRrnbdYx2F__nBvwRD8H_C1tNSlXOnnX0ay1FAJ3kOjQdMcvrQJUO8ubPnbz8Ge7zQ-2r1aJHZmLmFPcY3UUP8hQBhk9exuErbVtkJz6ktdG9Y_psfUc-WZXnwNZVRMk_AGQD9dnNRrQeLADMYQJ8mwe8qqdeNS8js"/>
+<div class="absolute top-3 right-3 bg-secondary-container text-on-secondary-container font-label-md text-label-md px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] filled" data-icon="check_circle">check_circle</span>
+                        Occupied
+                    </div>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<h3 class="font-title-lg text-title-lg text-primary mb-1 truncate">402 Pine St</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 truncate">Townhouse • Denver, CO</p>
+<div class="mt-auto grid grid-cols-2 gap-4 border-t border-outline-variant pt-4">
+<div>
+<p class="font-label-md text-label-md text-outline uppercase">Rent</p>
+<p class="font-headline-md text-headline-md text-primary">$2,800</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-outline uppercase">Tenant</p>
+<p class="font-body-lg text-body-lg text-primary font-medium truncate">Marcus T.</p>
+</div>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Floating Action Button (Mobile Only) -->
+<button class="md:hidden fixed bottom-[96px] right-4 w-14 h-14 bg-secondary text-on-secondary rounded-xl shadow-lg flex items-center justify-center z-50 hover:bg-on-secondary-fixed-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[28px]" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 border-t border-outline-variant bg-surface shadow-[0_-4px_6px_rgba(0,0,0,0.05)] md:hidden">
+<div class="flex justify-around items-center px-4 h-20">
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform duration-200 w-16" href="#">
+<div class="flex flex-col items-center justify-center py-1 px-4 rounded-full w-full">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+</div>
+<span class="font-label-md text-label-md mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center active:scale-90 transition-transform duration-200 w-16" href="#">
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 w-full">
+<span class="material-symbols-outlined filled" data-icon="domain">domain</span>
+</div>
+<span class="font-label-md text-label-md mt-1 text-primary">Properties</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform duration-200 w-16" href="#">
+<div class="flex flex-col items-center justify-center py-1 px-4 rounded-full w-full">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+</div>
+<span class="font-label-md text-label-md mt-1">Tenants</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform duration-200 w-16" href="#">
+<div class="flex flex-col items-center justify-center py-1 px-4 rounded-full w-full">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+</div>
+<span class="font-label-md text-label-md mt-1">Maintenance</span>
+</a>
+</div>
+</nav>
+</body></html>

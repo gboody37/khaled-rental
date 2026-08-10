@@ -1,5 +1,4 @@
 import './globals.css';
-import AppLayout from '../components/AppLayout';
 
 export const metadata = {
   title: 'Khaled Rentals',
@@ -34,9 +33,7 @@ export default function RootLayout({ children }) {
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body>
-        <AppLayout>
-          {children}
-        </AppLayout>
+        {children}
       </body>
     </html>
   );
