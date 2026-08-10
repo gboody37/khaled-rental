@@ -2,7 +2,7 @@ export default function Dashboard() {
   return (
     <div className="bg-background text-on-background antialiased min-h-screen flex flex-col md:flex-row">
       
- TopAppBar for Mobile / SideNav for Desktop (Implied by structure, replacing top bar with side bar for complex dashboard per modern design, but sticking to requested JSON top bar for simplicity if needed. Let's use a side nav for desktop and bottom nav for mobile as is standard for complex dashboards, but the JSON provided a TopAppBar and BottomNavBar. I will implement the TopAppBar for Mobile and Desktop as requested, but style it appropriately.) 
+  
  TopAppBar 
 <header className="w-full top-0 sticky bg-surface dark:bg-surface-container-low shadow-sm z-40 hidden md:block">
 <div className="flex justify-between items-center px-margin-edge h-16 w-full border-b border-outline-variant dark:border-outline">
@@ -17,7 +17,7 @@ export default function Dashboard() {
 </div>
 </div>
 </header>
- Mobile Top Header (Since TopAppBar was provided in JSON, I'll use it for mobile too, or just keep one top bar) 
+  
 <header className="w-full top-0 sticky bg-surface dark:bg-surface-container-low shadow-sm z-40 md:hidden flex justify-between items-center px-4 h-16">
 <span className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">EstateMaster</span>
 <img className="w-8 h-8 rounded-full object-cover" data-alt="A professional headshot of a property manager, smiling slightly, in a modern office setting with good lighting. The image is clean, sharp, and conveys trust and competence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6HZ6zBXZS-_gkOZ0BIx-SgCLyUYCcfbzQHBe2mab8uhcE_gT6RoP7UhTIwPEuu51CwmDFZBMiSXR-TJl-QY7KDIiHmzN1-4-542qrAe3JhzGN4K7yqSiqNC7j4m-WD1ebKVa7g11MX7iS2NMkVOhfAZqFBoHHMpjPly1QYOxxY4tMkbDcEc1eEHwSQpkd8-O_6qQr5RaIrZt5ugkdjd-Ezu7D11QcAO3YP_n62A5pfpr-HyGMKGrU"/>
