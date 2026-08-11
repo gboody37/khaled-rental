@@ -2,7 +2,7 @@ export default function Properties() {
   return (
     <div className="bg-background text-on-background min-h-screen font-sans antialiased pb-24 md:pb-0">
       
- TopAppBar 
+
 <header className="w-full top-0 sticky bg-surface border-b border-outline-variant shadow-sm z-40 hidden md:flex">
 <div className="flex justify-between items-center px-margin-edge h-16 w-full max-w-7xl mx-auto">
 <div className="flex items-center gap-4">
@@ -34,7 +34,7 @@ export default function Properties() {
 </div>
 </div>
 </header>
- Mobile Top Header 
+
 <header className="w-full top-0 sticky bg-surface border-b border-outline-variant shadow-sm z-40 md:hidden flex justify-between items-center px-4 h-16">
 <h1 className="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Properties</h1>
 <div className="flex items-center gap-2">
@@ -43,7 +43,7 @@ export default function Properties() {
 </button>
 </div>
 </header>
- Main Canvas 
+
 <main className="max-w-7xl mx-auto px-4 md:px-margin-edge py-lg md:py-xl">
 
 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
@@ -165,11 +165,11 @@ export default function Properties() {
 </article>
 </div>
 </main>
- Floating Action Button (Mobile Only) 
+
 <button className="md:hidden fixed bottom-[96px] right-4 w-14 h-14 bg-secondary text-on-secondary rounded-xl shadow-lg flex items-center justify-center z-50 hover:bg-on-secondary-fixed-variant transition-colors active:scale-95">
 <span className="material-symbols-outlined text-[28px]" data-icon="add">add</span>
 </button>
- BottomNavBar 
+
 <nav className="fixed bottom-0 w-full z-50 border-t border-outline-variant bg-surface shadow-[0_-4px_6px_rgba(0,0,0,0.05)] md:hidden">
 <div className="flex justify-around items-center px-4 h-20">
 <a className="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform duration-200 w-16" href="#">

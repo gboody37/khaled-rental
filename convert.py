@@ -1,6 +1,6 @@
 import os
 import re
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 
 def html_to_react(html_string):
     html_string = html_string.replace('class=', 'className=')
@@ -16,8 +16,6 @@ def html_to_react(html_string):
     html_string = html_string.replace('onchange', 'onChange')
     
     html_string = html_string.replace('$', 'JOD ')
-    
-    html_string = re.sub(r'<!--.*?-->', '', html_string, flags=re.DOTALL)
     
     html_string = re.sub(r'<(img|input|hr|br)([^>]*?)(?<!/)>', r'<\1\2/>', html_string)
     
@@ -44,8 +42,12 @@ def process_file(filepath, out_path, is_layout=False):
         html = f.read()
     
     soup = BeautifulSoup(html, 'html.parser')
-    body = soup.body
     
+    # Extract comments
+    for element in soup.find_all(string=lambda text: isinstance(text, Comment)):
+        element.extract()
+        
+    body = soup.body
     if not body:
         return
         

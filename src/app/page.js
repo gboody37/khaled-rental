@@ -2,8 +2,8 @@ export default function Dashboard() {
   return (
     <div className="bg-background text-on-background antialiased min-h-screen flex flex-col md:flex-row">
       
-  
- TopAppBar 
+
+
 <header className="w-full top-0 sticky bg-surface dark:bg-surface-container-low shadow-sm z-40 hidden md:block">
 <div className="flex justify-between items-center px-margin-edge h-16 w-full border-b border-outline-variant dark:border-outline">
 <div className="flex items-center gap-4">
@@ -17,12 +17,12 @@ export default function Dashboard() {
 </div>
 </div>
 </header>
-  
+
 <header className="w-full top-0 sticky bg-surface dark:bg-surface-container-low shadow-sm z-40 md:hidden flex justify-between items-center px-4 h-16">
 <span className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">EstateMaster</span>
 <img className="w-8 h-8 rounded-full object-cover" data-alt="A professional headshot of a property manager, smiling slightly, in a modern office setting with good lighting. The image is clean, sharp, and conveys trust and competence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6HZ6zBXZS-_gkOZ0BIx-SgCLyUYCcfbzQHBe2mab8uhcE_gT6RoP7UhTIwPEuu51CwmDFZBMiSXR-TJl-QY7KDIiHmzN1-4-542qrAe3JhzGN4K7yqSiqNC7j4m-WD1ebKVa7g11MX7iS2NMkVOhfAZqFBoHHMpjPly1QYOxxY4tMkbDcEc1eEHwSQpkd8-O_6qQr5RaIrZt5ugkdjd-Ezu7D11QcAO3YP_n62A5pfpr-HyGMKGrU"/>
 </header>
- Main Content 
+
 <main className="flex-1 p-4 md:p-margin-edge md:ml-0 pb-24 md:pb-margin-edge">
 
 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -180,7 +180,7 @@ export default function Dashboard() {
 </div>
 </div>
 </main>
- BottomNavBar (Mobile Only) 
+
 <nav className="md:hidden fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 border-t border-outline-variant dark:border-outline bg-surface dark:bg-surface-container-lowest shadow-[0_-4px_6px_rgba(0,0,0,0.05)] z-50">
 <a className="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 active:scale-90 transition-transform duration-200" href="#">
 <span className="material-symbols-outlined" data-weight="fill" style={{'fontVariationSettings': "'FILL' 1"}}>dashboard</span>

@@ -2,7 +2,7 @@ export default function Maintenance() {
   return (
     <div className="bg-background text-on-background min-h-screen flex flex-col font-body-md pb-24 md:pb-0">
       
- TopAppBar 
+
 <header className="bg-surface border-b border-outline-variant shadow-sm w-full top-0 sticky z-40 hidden md:flex">
 <div className="flex justify-between items-center px-margin-edge h-16 w-full">
 <div className="flex items-center gap-md">
@@ -26,14 +26,14 @@ export default function Maintenance() {
 </div>
 </div>
 </header>
- Mobile Header (Minimal) 
+
 <header className="md:hidden bg-surface border-b border-outline-variant p-md sticky top-0 z-40 flex justify-between items-center">
 <span className="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Maintenance</span>
 <button className="p-xs text-on-surface-variant">
 <span className="material-symbols-outlined">filter_list</span>
 </button>
 </header>
- Main Content Canvas 
+
 <main className="flex-1 p-md md:p-margin-edge max-w-[1600px] mx-auto w-full">
 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-lg gap-md">
 <div>
@@ -184,7 +184,7 @@ export default function Maintenance() {
 </div>
 </div>
 </main>
- BottomNavBar (Mobile Only) 
+
 <nav className="md:hidden fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 bg-surface border-t border-outline-variant shadow-[0_-4px_6px_rgba(0,0,0,0.05)] z-50">
 <a className="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform duration-200" href="#">
 <span className="material-symbols-outlined" style={{'fontVariationSettings': "'FILL' 0"}}>dashboard</span>

@@ -2,7 +2,7 @@ export default function Tenants() {
   return (
     <div className="bg-background text-on-background min-h-screen flex flex-col font-body-md">
       
- TopAppBar from JSON 
+
 <header className="w-full top-0 sticky border-b border-outline-variant dark:border-outline shadow-sm bg-surface dark:bg-surface-container-low z-40">
 <div className="flex justify-between items-center px-margin-edge h-16 w-full">
 <div className="flex items-center gap-sm">
@@ -24,7 +24,7 @@ export default function Tenants() {
 </button>
 </div>
 </header>
- Main Content 
+
 <main className="flex-grow container mx-auto px-4 md:px-margin-edge py-lg pb-24 md:pb-lg flex flex-col gap-lg">
 
 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
@@ -191,7 +191,7 @@ export default function Tenants() {
 </div>
 </div>
 </main>
- BottomNavBar from JSON (Mobile Only) 
+
 <nav className="md:hidden fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 bg-surface dark:bg-surface-container-lowest z-50 shadow-[0_-4px_6px_rgba(0,0,0,0.05)] border-t border-outline-variant dark:border-outline">
 <a className="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest active:scale-90 transition-transform duration-200 px-2 py-1 rounded-lg" href="#">
 <span className="material-symbols-outlined" data-icon="dashboard">dashboard</span>
